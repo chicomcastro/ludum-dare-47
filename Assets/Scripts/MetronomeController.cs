@@ -16,7 +16,7 @@ public class MetronomeController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         audioSource.clip = metronomeSample;
         lastTime = Time.time;
-        beatInterval = 60f / MusicParameters.instance.bpm;
+        beatInterval = 60f / MusicPlayer.instance.musicToPlay.bpm;
         InvokeRepeating("CountBeat", beatInterval, beatInterval);
     }
 
