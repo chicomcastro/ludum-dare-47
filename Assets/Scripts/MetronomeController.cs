@@ -21,7 +21,6 @@ public class MetronomeController : MonoBehaviour
     }
 
     void CountBeat() {
-        print("hey");
         audioSource.Play();
     }
 }
