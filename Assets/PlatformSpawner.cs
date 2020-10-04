@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     public GameObject platformObj;
+    public Transform platformParent;
     public float platHorDist;
     public float platVertDist;
 
@@ -29,7 +30,8 @@ public class PlatformSpawner : MonoBehaviour
                             y0 + platVertDist * i,
                             0
                         ),
-                        Quaternion.identity
+                        Quaternion.identity,
+                        platformParent
                     );
                     gamo.GetComponent<SpriteRenderer>().color = colors[i];
                 }
