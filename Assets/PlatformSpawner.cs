@@ -24,6 +24,12 @@ public class PlatformSpawner : MonoBehaviour
             Track track = MusicPlayer.instance.musicToPlay.tracks[i];
             for (int j = 0; j < track.notes.Length; j++)
             {
+                Color color = colors[i];
+                bool isPlatformOfCurrentLevel = i == LevelManager.instance.currentLevel - 1;
+                if (!isPlatformOfCurrentLevel) {
+                    color.a = 0.25f;
+                }
+                
                 for (int k = i; k < MusicPlayer.instance.musicToPlay.tracks.Count; k++)
                 {
                     Note note = track.notes[j];
@@ -37,10 +43,11 @@ public class PlatformSpawner : MonoBehaviour
                         Quaternion.identity,
                         platformParent
                     );
-                    gamo.GetComponent<SpriteRenderer>().color = colors[i];
+                    gamo.GetComponent<SpriteRenderer>().color = color;
                     AudioSource audioSource = gamo.AddComponent<AudioSource>();
                     audioSource.clip = track.sample;
                     audioSource.pitch = Mathf.Pow(2, note.pitch / 12.0f);
+                    gamo.GetComponent<PlatformId>().isScorable = isPlatformOfCurrentLevel;
                 }
             }
         }
