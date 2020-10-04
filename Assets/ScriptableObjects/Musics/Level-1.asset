@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Level-1
   m_EditorClassIdentifier: 
   bpm: 120
-  tracks: []
+  tracks:
+  - {fileID: 11400000, guid: 2f5148dd7f7da7d4b8992d4b5e5413b7, type: 2}
+  - {fileID: 11400000, guid: da3d4cc98dfb61a449d4fdc9153b32c6, type: 2}

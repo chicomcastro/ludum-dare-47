@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 137173cb40fec25459250da1862287d5, type: 3}
-  m_Name: Kick-01
+  m_Name: Bass-01
   m_EditorClassIdentifier: 
   trackName: 
-  sample: {fileID: 8300000, guid: 60abf5fc0cb39b0459b58a85d67f894c, type: 3}
+  sample: {fileID: 8300000, guid: 52de6fe9236b20949a372ff45df02942, type: 3}
   notes:
   - pitch: 0
     tempo: 1
   - pitch: 0
-    tempo: 2
+    tempo: 1.5
   - pitch: 0
-    tempo: 3
+    tempo: 2.5
   - pitch: 0
-    tempo: 4
+    tempo: 3.5
+  - pitch: 0
+    tempo: 4.5
   - pitch: 0
     tempo: 5
   - pitch: 0
-    tempo: 6
+    tempo: 5.5
   - pitch: 0
-    tempo: 7
+    tempo: 6.5
   - pitch: 0
     tempo: 7.5
-  - pitch: 0
-    tempo: 8.5

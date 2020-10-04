@@ -43,7 +43,6 @@ public class MusicPlayer : MonoBehaviour
         float[] waitingIntervals = track.notes.Zip(
             track.notes.Skip(1), (x, y) => (y.tempo - x.tempo) * beatInterval
         ).ToArray<float>();
-        print(string.Join(" ,", waitingIntervals.Select(i => i.ToString()).ToArray()));
 
         while (true)
         {
