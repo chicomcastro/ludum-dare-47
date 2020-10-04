@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 251571890}
   - component: {fileID: 251571889}
   m_Layer: 0
-  m_Name: Music
+  m_Name: MusicPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,10 +147,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 251571888}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e42ca4e48e7bee489e8c4e14aded7e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d7a32099ab93f4aa9726b9d8f71b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 60
+  musicToPlay: {fileID: 11400000, guid: 903ff5317e2e16f4f8d134a6dcf0c670, type: 2}
 --- !u!4 &251571890
 Transform:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767826470}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16a87c9d2f959d545bad5b44f37b793b, type: 3}
   m_Name: 
