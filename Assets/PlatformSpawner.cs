@@ -17,6 +17,10 @@ public class PlatformSpawner : MonoBehaviour
         List<Color> colors = new List<Color> {Color.blue, Color.red, Color.green};
         for (int i = 0; i < MusicPlayer.instance.musicToPlay.tracks.Count; i++)
         {
+            if (i >= LevelManager.instance.currentLevel) {
+                continue;
+            }
+
             Track track = MusicPlayer.instance.musicToPlay.tracks[i];
             for (int j = 0; j < track.notes.Length; j++)
             {
@@ -36,7 +40,7 @@ public class PlatformSpawner : MonoBehaviour
                     gamo.GetComponent<SpriteRenderer>().color = colors[i];
                     AudioSource audioSource = gamo.AddComponent<AudioSource>();
                     audioSource.clip = track.sample;
-                    audioSource.pitch = Mathf.Pow(2, note.pitch / 12.0f);                    
+                    audioSource.pitch = Mathf.Pow(2, note.pitch / 12.0f);
                 }
             }
         }
