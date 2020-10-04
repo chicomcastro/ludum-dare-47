@@ -11,12 +11,15 @@ public class PlatformId : MonoBehaviour
     private bool haveScored;
     private float masterHitTime;
 
-    private void Start() {
+    private void Start()
+    {
         masterIsOnMe = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "MasterCounter") {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "MasterCounter")
+        {
             audioSource = gameObject.GetComponent<AudioSource>();
             audioSource.Play();
             masterIsOnMe = true;
@@ -24,13 +27,16 @@ public class PlatformId : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other) {        
+    private void OnTriggerStay2D(Collider2D other)
+    {
         // See player
-        if (other.tag == "PlayerTrigger" && masterIsOnMe && !haveScored && isScorable) {
+        if (other.tag == "PlayerTrigger" && masterIsOnMe && !haveScored && isScorable)
+        {
             GameObject player = other.GetComponent<Collider2D>().transform.parent.gameObject;
 
             // Do not score for above positioning
-            if (player.transform.position.y < transform.position.y) {
+            if (player.transform.position.y < transform.position.y)
+            {
                 return;
             }
 
@@ -42,12 +48,29 @@ public class PlatformId : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
-        if (other.tag == "MasterCounter") {
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "MasterCounter")
+        {
             masterIsOnMe = false;
 
-            if (!haveScored) {
-                // TODO send to black list
+            if (isScorable)
+            {
+                if (!haveScored)
+                {
+                    gameObject.layer = LayerMask.NameToLayer("Default");
+                    Color color = gameObject.GetComponent<SpriteRenderer>().color;
+                    color.a = 0.25f;
+                    gameObject.GetComponent<SpriteRenderer>().color = color;
+                }
+                else
+                {
+                    Color color = gameObject.GetComponent<SpriteRenderer>().color;
+                    color.a = 0.25f;
+                    gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+
+                    // TODO soltar particle effect bonitinho
+                }
             }
         }
     }

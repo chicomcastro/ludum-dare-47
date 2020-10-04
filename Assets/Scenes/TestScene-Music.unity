@@ -2559,7 +2559,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   maxHitScore: 50
-  timeLimit: 0.5
+  timeLimit: 1
 --- !u!1 &2090178963
 GameObject:
   m_ObjectHideFlags: 0

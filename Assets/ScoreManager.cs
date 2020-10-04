@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
     public float score = 0;
 
     public float maxHitScore = 50f;
-    public float timeLimit = 0.5f;
+    public float timeLimit = 1f;
 
     private void Awake()
     {
