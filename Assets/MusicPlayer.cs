@@ -23,38 +23,38 @@ public class MusicPlayer : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
         beatInterval = 60f / musicToPlay.bpm;
+        yield return new WaitForSeconds(beatInterval * 4);
 
-        foreach (Track track in musicToPlay.tracks)
+        for (int i = 0; i < musicToPlay.tracks.Count; i++)
         {
+            Track track = musicToPlay.tracks[i];
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = track.sample;
             audioSource.playOnAwake = false;
-            StartCoroutine(PlayTrack(track, audioSource));
+            StartCoroutine(PlayTrack(track, audioSource, i));
         }
     }
 
-    IEnumerator PlayTrack(Track track, AudioSource audioSource)
+    IEnumerator PlayTrack(Track track, AudioSource audioSource, int trackIndex)
     {
         float compassDuration = 4 * beatInterval;
-        yield return new WaitForSeconds(compassDuration);
-        float[] waitingIntervals = track.notes.Zip(
-            track.notes.Skip(1), (x, y) => (y.tempo - x.tempo) * beatInterval
-        ).ToArray<float>();
+        float[] timeToPlay = track.notes.Select(
+            note => (note.tempo + 2 * trackIndex) * beatInterval
+        ).ToArray();
 
         while (true)
         {
+            float lastTime = Time.time;
             for (int i = 0; i < track.notes.Length - 1; i++)
             {
+                Note note = track.notes[i];
+                audioSource.pitch = Mathf.Pow(2, note.pitch / 12.0f);
                 audioSource.Play();
-                yield return new WaitForSeconds(waitingIntervals[i]);
+                yield return new WaitUntil(() => Time.time >= lastTime + timeToPlay[i]);
             }
-            audioSource.Play();
-
-            float remainingTime = compassDuration - waitingIntervals.Sum() % (compassDuration);
-            yield return new WaitForSeconds(remainingTime);
         }
     }
 }

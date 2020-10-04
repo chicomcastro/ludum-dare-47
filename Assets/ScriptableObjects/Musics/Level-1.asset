@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 941fcd1758b1e534397d96b62142c5dd, type: 3}
   m_Name: Level-1
   m_EditorClassIdentifier: 
-  bpm: 120
+  bpm: 80
   tracks:
   - {fileID: 11400000, guid: 2f5148dd7f7da7d4b8992d4b5e5413b7, type: 2}
   - {fileID: 11400000, guid: da3d4cc98dfb61a449d4fdc9153b32c6, type: 2}
+  - {fileID: 11400000, guid: cfe35746885ef144e865f0b6680e0e18, type: 2}
