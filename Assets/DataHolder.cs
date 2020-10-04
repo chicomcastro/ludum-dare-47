@@ -8,17 +8,21 @@ public class DataHolder : MonoBehaviour
 
     public static DataHolder instance;
 
-    private void Awake() {
+    private void Awake()
+    {
         DontDestroyOnLoad(this.gameObject);
-        if (instance == null) {
+        if (instance == null)
+        {
             instance = this;
         }
-        else {
+        else
+        {
             Destroy(this.gameObject);
         }
     }
 
-    public void UpdateHoldingData() {
+    public void UpdateHoldingData()
+    {
         currentLevel = LevelManager.instance.currentLevel;
     }
 }

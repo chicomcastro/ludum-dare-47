@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelEnder : MonoBehaviour
 {
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         LevelManager.instance.EndLevel();
     }
 }

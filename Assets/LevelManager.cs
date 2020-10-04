@@ -12,51 +12,62 @@ public class LevelManager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject levelEndPanel;
 
-    private void Awake() {
-        if (instance == null) {
+    private void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
         }
-        else {
+        else
+        {
             Destroy(this);
         }
         currentLevel = DataHolder.instance.currentLevel;
     }
 
-    private void Start() {
+    private void Start()
+    {
         pausePanel.SetActive(false);
         levelEndPanel.SetActive(false);
         Time.timeScale = 1;
     }
 
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) {
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        {
             PauseGame();
         }
     }
 
-    public void EndLevel() {
+    public void EndLevel()
+    {
         print("cabou");
         levelEndPanel.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void PauseGame() {
+    public void PauseGame()
+    {
         pausePanel.SetActive(!pausePanel.activeInHierarchy);
         Time.timeScale = 1 - Time.timeScale;
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit(0);
     }
 
-    public void NextLevel() {
+    public void NextLevel()
+    {
         currentLevel++;
         DataHolder.instance.UpdateHoldingData();
         SceneManager.LoadScene(0);
     }
 
 
-    public void TryAgain() {
+    public void TryAgain()
+    {
         SceneManager.LoadScene(0);
     }
 }

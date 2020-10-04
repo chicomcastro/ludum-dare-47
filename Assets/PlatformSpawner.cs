@@ -14,10 +14,11 @@ public class PlatformSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<Color> colors = new List<Color> {Color.blue, Color.red, Color.green};
+        List<Color> colors = new List<Color> { Color.blue, Color.red, Color.green };
         for (int i = 0; i < MusicPlayer.instance.musicToPlay.tracks.Count; i++)
         {
-            if (i >= LevelManager.instance.currentLevel) {
+            if (i >= LevelManager.instance.currentLevel)
+            {
                 continue;
             }
 
@@ -26,15 +27,16 @@ public class PlatformSpawner : MonoBehaviour
             {
                 Color color = colors[i];
                 bool isPlatformOfCurrentLevel = i == LevelManager.instance.currentLevel - 1;
-                if (!isPlatformOfCurrentLevel) {
+                if (!isPlatformOfCurrentLevel)
+                {
                     color = Color.white;
                 }
-                
+
                 for (int k = i; k < MusicPlayer.instance.musicToPlay.tracks.Count; k++)
                 {
                     Note note = track.notes[j];
                     GameObject gamo = Instantiate(
-                        platformObj,    
+                        platformObj,
                         new Vector3(
                             x0 + k * platHorDist * 8 + platHorDist * note.tempo,
                             y0 + platVertDist * i,
