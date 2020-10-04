@@ -27,7 +27,7 @@ public class PlatformSpawner : MonoBehaviour
                 Color color = colors[i];
                 bool isPlatformOfCurrentLevel = i == LevelManager.instance.currentLevel - 1;
                 if (!isPlatformOfCurrentLevel) {
-                    color.a = 0.25f;
+                    color = Color.white;
                 }
                 
                 for (int k = i; k < MusicPlayer.instance.musicToPlay.tracks.Count; k++)
