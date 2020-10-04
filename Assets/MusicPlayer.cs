@@ -38,6 +38,8 @@ public class MusicPlayer : MonoBehaviour
 
     IEnumerator PlayTrack(Track track, AudioSource audioSource)
     {
+        float compassDuration = 4 * beatInterval;
+        yield return new WaitForSeconds(compassDuration);
         float[] waitingIntervals = track.notes.Zip(
             track.notes.Skip(1), (x, y) => (y.tempo - x.tempo) * beatInterval
         ).ToArray<float>();
@@ -52,7 +54,6 @@ public class MusicPlayer : MonoBehaviour
             }
             audioSource.Play();
 
-            float compassDuration = 4 * beatInterval;
             float remainingTime = compassDuration - waitingIntervals.Sum() % (compassDuration);
             yield return new WaitForSeconds(remainingTime);
         }
