@@ -34,14 +34,11 @@ public class PlatformSpawner : MonoBehaviour
                         platformParent
                     );
                     gamo.GetComponent<SpriteRenderer>().color = colors[i];
+                    AudioSource audioSource = gamo.AddComponent<AudioSource>();
+                    audioSource.clip = track.sample;
+                    audioSource.pitch = Mathf.Pow(2, note.pitch / 12.0f);                    
                 }
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

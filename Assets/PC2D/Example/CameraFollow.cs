@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-namespace  PC2D
+namespace PC2D
 {
     public class CameraFollow : MonoBehaviour
     {
@@ -19,11 +19,13 @@ namespace  PC2D
             float height = 2f * cam.orthographicSize;
             float width = height * cam.aspect;
 
-            if (target.position.x >= minBoundary.x + width / 2) {
+            if (target.position.x - width / 2 >= minBoundary.x)
+            {
                 pos.x = target.position.x;
             }
 
-            if (target.position.y >= minBoundary.y + height / 2) {
+            if (target.position.y - height / 2 >= minBoundary.y || target.position.y <= pos.y - height / 2.5)
+            {
                 pos.y = target.position.y;
             }
 
