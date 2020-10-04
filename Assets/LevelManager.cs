@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -9,13 +10,22 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
     public GameObject pausePanel;
+    public GameObject levelEndPanel;
 
     private void Awake() {
-        instance = this;
+        if (instance == null) {
+            instance = this;
+        }
+        else {
+            Destroy(this);
+        }
+        currentLevel = DataHolder.instance.currentLevel;
     }
 
     private void Start() {
         pausePanel.SetActive(false);
+        levelEndPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void Update() {
@@ -26,6 +36,7 @@ public class LevelManager : MonoBehaviour
 
     public void EndLevel() {
         print("cabou");
+        levelEndPanel.SetActive(true);
         Time.timeScale = 0;
     }
 
@@ -36,5 +47,16 @@ public class LevelManager : MonoBehaviour
 
     public void QuitGame() {
         Application.Quit(0);
+    }
+
+    public void NextLevel() {
+        currentLevel++;
+        DataHolder.instance.UpdateHoldingData();
+        SceneManager.LoadScene(0);
+    }
+
+
+    public void TryAgain() {
+        SceneManager.LoadScene(0);
     }
 }
