@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Melody-01
   m_EditorClassIdentifier: 
   trackName: 
-  sample: {fileID: 8300000, guid: be5400cc15081784b984bc9aee4851dd, type: 3}
+  sample: {fileID: 8300000, guid: 71f84770007c95749be8b99187101156, type: 3}
   notes:
-  - pitch: 36
+  - pitch: 24
     tempo: 1
-  - pitch: 32
+  - pitch: 20
     tempo: 3.5
-  - pitch: 34
+  - pitch: 22
     tempo: 5
-  - pitch: 34
+  - pitch: 22
     tempo: 9
-  - pitch: 29
+  - pitch: 17
     tempo: 11.5
-  - pitch: 32
+  - pitch: 20
     tempo: 13
