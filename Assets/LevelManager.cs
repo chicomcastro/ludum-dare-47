@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
     public GameObject pausePanel;
     public GameObject levelEndPanel;
+    public GameObject endGamePanel;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
         levelEndPanel.SetActive(false);
+        endGamePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -43,8 +45,17 @@ public class LevelManager : MonoBehaviour
     public void EndLevel()
     {
         print("cabou");
-        levelEndPanel.SetActive(true);
         Time.timeScale = 0;
+
+        if (currentLevel == MusicPlayer.instance.musicToPlay.tracks.Count)
+        {
+            endGamePanel.SetActive(true);
+        }
+        else {
+            currentLevel = 1;
+            DataHolder.instance.UpdateHoldingData();
+            levelEndPanel.SetActive(true);
+        }
     }
 
     public void PauseGame()
@@ -62,12 +73,16 @@ public class LevelManager : MonoBehaviour
     {
         currentLevel++;
         DataHolder.instance.UpdateHoldingData();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("TestScene-Music");
     }
 
 
     public void TryAgain()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void GoToMenu() {
+        SceneManager.LoadScene("Menu");
     }
 }
